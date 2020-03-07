@@ -3,6 +3,8 @@ language: java
 jdk:
   - openjdk13
 
+script: "mvn cobertura:cobertura"
+
 #services:
 #  - postgresql
 
@@ -12,7 +14,7 @@ jdk:
 # после выполнения сборки запустить скрипт, который будет собирать статистику по JaCoCo
 # Здесь используется сторонни сервис https://codecov.io/
 after_success:
-  - bash <(curl -s https://codecov.io/bash) -t 450eb8de-fee1-4287-895f-4147b1d06117
+  - bash <(curl -s https://codecov.io/bash)
 
 # Отправлять уведомление на почтуyouremail@smtp.ru(Изменить на свою) если сборка упала
 notifications:
