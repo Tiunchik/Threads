@@ -34,11 +34,11 @@ public class ThreadState {
         first.start();
         second.start();
         while ((first.getState() == Thread.State.RUNNABLE) || (second.getState() == Thread.State.RUNNABLE)) {
-            System.out.println(String.format("\n|%10s is %s10| |%10s is %s10|\n"
-                    , first.getName(), first.getState(), second.getName(), second.getState()));
+            System.out.println(String.format("\n|%10s is %s10| |%10s is %s10|\n",
+                    first.getName(), first.getState(), second.getName(), second.getState()));
         }
         System.out.println("Execution of threads is finished, current status is given below:\n");
-        System.out.println(String.format("|%10s is %s10| |%10s is %s10|"
-                , first.getName(), first.getState(), second.getName(), second.getState()));
+        System.out.println(String.format("|%10s is %s10| |%10s is %s10|",
+                first.getName(), first.getState(), second.getName(), second.getState()));
     }
 }
