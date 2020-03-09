@@ -23,9 +23,11 @@ public class ThreadState {
      * @param args
      */
     public static void main(String[] args) {
-        Thread first = new Thread(() -> {});
+        Thread first = new Thread(() -> {
+        });
         first.setName("First thread");
-        Thread second = new Thread(() -> {});
+        Thread second = new Thread(() -> {
+        });
         second.setName("Second thread");
         System.out.println(first.getName() + " is " + first.getState());
         System.out.println(second.getName() + " is " + second.getState());
