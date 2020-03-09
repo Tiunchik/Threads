@@ -3,7 +3,7 @@
  *
  * @author Maksim Tiunchik
  */
-package ru.jo4jmiddle.threads;
+package ru.job4jmiddle.threads;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

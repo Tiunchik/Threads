@@ -3,10 +3,7 @@
  *
  * @author Maksim Tiunchik
  */
-package ru.job4j.interrupt;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+package ru.job4jmiddle.interrupt;
 
 /**
  * Class ConsoleProgress - work with interruption
