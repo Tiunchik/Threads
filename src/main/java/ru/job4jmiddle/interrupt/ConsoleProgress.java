@@ -9,8 +9,8 @@ package ru.job4jmiddle.interrupt;
  * Class ConsoleProgress - work with interruption
  *
  * @author Maksim Tiunchik (senebh@gmail.com)
- * @version 0.1
- * @since 09.03.2020
+ * @version 0.2
+ * @since 10.03.2020
  */
 public class ConsoleProgress implements Runnable {
 
@@ -22,15 +22,18 @@ public class ConsoleProgress implements Runnable {
     @Override
     public void run() {
         String circle = "- \\ | / -";
-        try {
+
         while (!Thread.currentThread().isInterrupted()) {
             circle = circle.equals(CHECK) ? "- \\ | / -" : CHECK;
             System.out.print("\r load: " + circle);
-            Thread.sleep(500);
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+                System.out.println("\n" + Thread.currentThread().getName() + "'s execution is stopped");
             }
-        } catch (InterruptedException e) {
-            System.out.println("\n" + Thread.currentThread().getName() + "'s execution is stopped");
         }
+
     }
 
     /**
