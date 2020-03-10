@@ -35,7 +35,11 @@ public class Config {
     /**
      * contains information after execution getConfig method.
      */
-    private final String[] param = new String[3];
+    private String[] param;
+    /**
+     * number of file for downloading
+     */
+    private int count = 0;
 
     /**
      * convert args of main program to parameters of program.
@@ -43,30 +47,27 @@ public class Config {
      * @param parametrs args
      */
     public void getConfig(String[] parametrs) {
+        int limit = parametrs.length - 1;
         try (BufferedReader console = new BufferedReader(new InputStreamReader(System.in))) {
-            while (parametrs.length < 2) {
-                System.out.println("Please write parametrs again");
+            while (parametrs.length < 2 || !parametrs[limit].matches(SPEED)) {
+                System.out.println("Please write parametrs again, last parametr have to be speed limit");
                 String para = console.readLine();
                 parametrs = para.split(SPACE);
             }
-            while (!parametrs[0].matches(URL)) {
-                System.out.println("Please write url parametr again, it has to be started from \"http\"");
-                parametrs[0] = console.readLine();
+            for (int index = 0; index < limit; index++) {
+                while (!parametrs[index].matches(URL)) {
+                    System.out.println("Please write url parameter again, it has to be started from \"http\"");
+                    parametrs[index] = console.readLine();
+                }
             }
-            while (!parametrs[1].matches(SPEED)) {
+            while (!parametrs[limit].matches(SPEED)) {
                 System.out.println("Please write speed limit again, it has to contain only numbers");
-                parametrs[1] = console.readLine();
+                parametrs[limit] = console.readLine();
             }
-            param[0] = parametrs[0];
-            param[1] = parametrs[1];
+            param = new String[parametrs.length];
+            System.arraycopy(parametrs, 0, param, 0, parametrs.length);
         } catch (IOException e) {
             e.printStackTrace();
-        }
-        int index = param[0].lastIndexOf("/");
-        if (index > 0) {
-            param[2] = param[0].substring(index);
-        } else {
-            param[2] = "save";
         }
     }
 
@@ -76,7 +77,7 @@ public class Config {
      * @return URL
      */
     public String getURL() {
-        return param[0];
+        return param[count];
     }
 
     /**
@@ -85,7 +86,7 @@ public class Config {
      * @return speed limit
      */
     public int getLimit() {
-        return Integer.parseInt(param[1]);
+        return Integer.parseInt(param[param.length - 1]);
     }
 
     /**
@@ -94,6 +95,17 @@ public class Config {
      * @return name
      */
     public String getName() {
-        return param[2];
+        String answer;
+        int index = param[count].lastIndexOf("/");
+        if (index > 0) {
+            answer = param[count].substring(index);
+        } else {
+            answer = "save" + count;
+        }
+        return answer;
+    }
+
+    public void next() {
+        count++;
     }
 }
