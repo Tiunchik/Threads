@@ -9,30 +9,32 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 /**
- * Class Access - example of race condition in multytheading
+ * Class RaceExample - example of race condition in multithreading
  *
  * @author Maksim Tiunchik (senebh@gmail.com)
- * @version 0.1
- * @since 09.03.2020
+ * @version 0.2
+ * @since 10.03.2020
  */
-public class Access {
-    private static final Logger LOG = LogManager.getLogger(Access.class.getName());
+public class RaceExample {
+    private static final Logger LOG = LogManager.getLogger(RaceExample.class.getName());
     /**
      * static variable
      */
     private static int result = 0;
 
     /**
-     * main, start 2 non-atomic threads that work with one
+     * main, start 2 threads that work with one int variable.
+     * One thread capure variable and don't give it to the other.
      *
      * @param args
      */
     public static void main(String[] args) {
         Runnable increment = () -> {
-            int first = result++;
-            int second = first * 2;
-            if (result * 2 != second) {
-                throw new IllegalArgumentException("multythreading problem");
+            while (result < 10) {
+                int first = ++result;
+                if (first == result) {
+                    System.out.println(first);
+                }
             }
         };
 
