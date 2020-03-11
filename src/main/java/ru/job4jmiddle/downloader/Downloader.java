@@ -34,8 +34,8 @@ public class Downloader {
     private final static String SPEED = "^[0-9].*$";
 
 
-    private void download(String URL, String name, int downLimit) {
-        try (BufferedInputStream readURL = new BufferedInputStream(new URL(URL).openStream());
+    private void download(String url, String name, int downLimit) {
+        try (BufferedInputStream readURL = new BufferedInputStream(new URL(url).openStream());
              FileOutputStream writeFile = new FileOutputStream(name)) {
             int limit = ((double) KB / downLimit < 1) ? 0 : KB / downLimit;
             byte[] dataBuffer = new byte[KB];
