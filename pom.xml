@@ -15,6 +15,13 @@
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>ru.job4j</groupId>
+            <artifactId>job4j</artifactId>
+            <version>3.0</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/../job4j/chapter_005/target/chapter__005-3.0.jar</systemPath>
+        </dependency>
         <!-- https://mvnrepository.com/artifact/org.mockito/mockito-all -->
         <dependency>
             <groupId>org.mockito</groupId>
@@ -86,7 +93,7 @@
                         <format>html</format>
                         <format>xml</format>
                     </formats>
-                    <check />
+                    <check/>
                 </configuration>
             </plugin>
             <plugin>
