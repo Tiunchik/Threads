@@ -22,7 +22,7 @@ public class Count {
      * counter
      */
     @GuardedBy("this")
-    private int count = 0;
+    private volatile int count = 0;
 
     /**
      * increment counter
@@ -36,7 +36,7 @@ public class Count {
      *
      * @return counter
      */
-    public synchronized int getCount() {
+    public int getCount() {
          return count;
     }
 }
