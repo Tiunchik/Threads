@@ -12,16 +12,11 @@
         <maven.compiler.source>13</maven.compiler.source>
         <maven.compiler.target>13</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
     </properties>
 
+
     <dependencies>
-        <dependency>
-            <groupId>ru.job4j</groupId>
-            <artifactId>job4j</artifactId>
-            <version>3.0</version>
-            <scope>system</scope>
-            <systemPath>${basedir}/../job4j/chapter_005/target/chapter__005-3.0.jar</systemPath>
-        </dependency>
         <!-- https://mvnrepository.com/artifact/org.mockito/mockito-all -->
         <dependency>
             <groupId>org.mockito</groupId>

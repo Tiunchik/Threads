@@ -27,7 +27,7 @@ public class Count {
     /**
      * increment counter
      */
-    public synchronized void increment() {
+    public void increment() {
         count++;
     }
 

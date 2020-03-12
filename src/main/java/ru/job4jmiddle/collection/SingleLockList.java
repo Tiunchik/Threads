@@ -7,9 +7,6 @@ package ru.job4jmiddle.collection;
 
 import net.jcip.annotations.GuardedBy;
 import net.jcip.annotations.ThreadSafe;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import ru.job4j.list.LifeArrayList;
 
 import java.util.Iterator;
 
