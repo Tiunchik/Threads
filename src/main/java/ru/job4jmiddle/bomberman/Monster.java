@@ -5,21 +5,16 @@
  */
 package ru.job4jmiddle.bomberman;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import ru.job4jmiddle.pool.ThreadsPool;
-
 import java.util.Random;
-import java.util.concurrent.locks.ReentrantLock;
 
 /**
- * Class Player -
+ * Class Monster -
  *
  * @author Maksim Tiunchik (senebh@gmail.com)
  * @version 0.1
  * @since 14.03.2020
  */
-public class Player implements Runnable {
+public class Monster implements Runnable {
 
     /**
      * game board for game
@@ -27,26 +22,21 @@ public class Player implements Runnable {
     private final Board board;
 
     /**
-     * is there player added to game board
+     * is there Monster added to game board
      */
     private boolean added = false;
-
-    /**
-     *
-     */
-    private volatile char to = '0';
 
     /**
      * constructor, set board for game
      *
      * @param board
      */
-    Player(Board board) {
+    Monster(Board board) {
         this.board = board;
     }
 
     /**
-     * player actions in separated thread
+     * Monster actions in separated thread
      */
     @Override
     public void run() {
@@ -65,7 +55,10 @@ public class Player implements Runnable {
                 } else {
                     Thread.sleep(500);
                 }
-                System.out.println("Player is on position " + source.getX() + " " + source.getY());
+                System.out.println(Thread
+                        .currentThread()
+                        .getName() + " is on position "
+                        + source.getX() + " " + source.getY());
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
             }
@@ -79,8 +72,8 @@ public class Player implements Runnable {
      * @return cell for step
      */
     private Cell step(Cell place) {
-        int choice = to;
         int side = board.size() - 1;
+        int choice = new Random().nextInt(4);
         int xMove = place.getX();
         int yMove = place.getY();
         if (choice == 0) {
@@ -130,14 +123,4 @@ public class Player implements Runnable {
         }
         return null;
     }
-
-    private class ReadKeyBoard extends Thread {
-
-
-        @Override
-        public void run() {
-            //TODO actions with "to" to provide information of player actions
-        }
-    }
-
 }

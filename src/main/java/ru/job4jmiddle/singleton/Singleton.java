@@ -11,16 +11,16 @@ import java.util.concurrent.atomic.AtomicReference;
  */
 public class Singleton {
 
-    private static volatile AtomicReference<String> INSTANCE;
+    private static volatile AtomicReference<String> iNSTANCE;
 
     private Singleton() {
     }
 
     public static AtomicReference<String> getInstance() {
-        if (INSTANCE == null) {
-            INSTANCE = new AtomicReference<String>();
+        if (iNSTANCE == null) {
+            iNSTANCE = new AtomicReference<String>();
         }
-        return INSTANCE;
+        return iNSTANCE;
     }
 
     public String add(String model) {
