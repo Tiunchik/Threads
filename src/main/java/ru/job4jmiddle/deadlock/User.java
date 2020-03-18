@@ -49,9 +49,6 @@ public class User {
         thread00.start();
         thread01.start();
 
-
-        Thread.sleep(500);
-
         start.countDown();
 
         Thread.sleep(500);

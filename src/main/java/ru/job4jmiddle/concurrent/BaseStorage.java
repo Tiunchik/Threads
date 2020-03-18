@@ -18,15 +18,14 @@ import java.util.concurrent.ConcurrentHashMap;
  * Class BaseStorage.
  *
  * @author Maksim Tiunchik (senebh@gmail.com)
- * @version 0.1
- * @since 14.03.2020
+ * @version 0.2
+ * @since 18.03.2020
  */
 @ThreadSafe
 public class BaseStorage {
     /**
      * inner ConcurrentHashMap for storing Users.
      */
-    @GuardedBy("this")
     private final ConcurrentHashMap<Integer, Base> storage = new ConcurrentHashMap<>();
 
     /**
@@ -35,7 +34,7 @@ public class BaseStorage {
      * @param base base for add
      * @return true if base is added
      */
-    public synchronized boolean add(Base base) {
+    public boolean add(Base base) {
         storage.put(base.getId(), base);
         return storage.containsKey(base.getId());
     }
@@ -46,7 +45,7 @@ public class BaseStorage {
      * @param base base to uodate
      * @return true if base is updated
      */
-    public synchronized boolean update(Base base) {
+    public boolean update(Base base) {
         return delete(base) & add(base);
     }
 
@@ -56,7 +55,7 @@ public class BaseStorage {
      * @param base base for deleting
      * @return true if base is deleted
      */
-    public synchronized boolean delete(Base base) {
+    public boolean delete(Base base) {
         storage.remove(base.getId());
         return !storage.containsKey(base.getId());
     }
