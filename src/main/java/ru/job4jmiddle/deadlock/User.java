@@ -38,7 +38,7 @@ public class User {
         return "User " + getName() + "greetings User " + greeted;
     }
 
-    public static void main(String[] args) throws InterruptedException{
+    public static void main(String[] args) throws InterruptedException {
         User user1 = new User("first");
         User user2 = new User("second");
 

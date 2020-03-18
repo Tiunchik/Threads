@@ -6,6 +6,7 @@
 package ru.job4jmiddle.switcher.secondoption;
 
 import ru.job4jmiddle.switcher.secondoption.Object;
+
 import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
 
@@ -26,7 +27,7 @@ public class Second extends Thread {
 
     private CyclicBarrier secondbarrier;
 
-    Second(Object obj, int adder, CyclicBarrier firstbarrier, CyclicBarrier secondbarrier){
+    Second(Object obj, int adder, CyclicBarrier firstbarrier, CyclicBarrier secondbarrier) {
         this.obj = obj;
         this.adder = adder;
         this.firstbarrier = firstbarrier;
